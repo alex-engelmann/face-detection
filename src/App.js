@@ -49,13 +49,13 @@ class App extends Component {
         email: '',
         entries: 0,
         joined: ''
+        
       }
     }
   }
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
-    
   }
 
   onButtonSubmit = () => {
