@@ -33,7 +33,7 @@ const particlesOptions = {
 const initialState = {
   input: '',
   imageUrl: '',
-  box: [],
+  box: [{leftCol: 0, topRow: 0, rightCol: 0, bottomRow: 0 }],
   route: 'signin',
   isSignedIn: false,
   showImage: false,
@@ -76,22 +76,20 @@ class App extends Component {
     const width = Number(image.width);
     const height = Number(image.height);
 
-    let leftCol = [], topRow = [], rightCol = [], bottomRow = [];
+    // let leftCol = [], topRow = [], rightCol = [], bottomRow = [];
+    let finalfaces = []
 
     for (let i = 0; i < faces.length; i++) {
-      leftCol.push(faces[i].left_col * width) 
-      topRow.push(faces[i].top_row * height)
-      rightCol.push(width - (faces[i].right_col * width))
-      bottomRow.push(height - (faces[i].bottom_row * height))
+      let leftCol = faces[i].left_col * width
+      let topRow = faces[i].top_row * height
+      let rightCol = (width - (faces[i].right_col * width))
+      let bottomRow = (height - (faces[i].bottom_row * height))
+      finalfaces.push({leftCol,topRow,rightCol,bottomRow})
     }
 
-
     return {
-
-      leftCol, 
-      topRow, 
-      rightCol, 
-      bottomRow
+      
+      finalfaces
 
 
       // leftCol0: faces[0].left_col * width,

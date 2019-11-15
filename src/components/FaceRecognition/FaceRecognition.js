@@ -9,14 +9,19 @@ const FaceRecognition = ({ imageUrl, box }) => {
 
                 {console.log(box)}
 
-                {/*<div className='bounding-box'
+                {/* box.map is not a function */}
+
+                {/* box.map((ele) => (
+                    <div className='bounding-box'
                     style={{
-                        top: box.topRow[0],
-                        right: box.rightCol[0],
-                        bottom: box.bottomRow[0],
-                        left: box.leftCol[0]
+                        top: ele.topRow,
+                        right: ele.rightCol,
+                        bottom: ele.bottomRow,
+                        left: ele.leftCol
                     }}
-                ></div>*/}
+                ></div>
+                  ))}
+               
 
                 {/*<div className='bounding-box'
                     style={{
