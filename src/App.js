@@ -33,7 +33,7 @@ const particlesOptions = {
 const initialState = {
   input: '',
   imageUrl: '',
-  box: [{}],
+  box: [],
   route: 'signin',
   isSignedIn: false,
   showImage: false,
@@ -76,16 +76,33 @@ class App extends Component {
     const width = Number(image.width);
     const height = Number(image.height);
 
-    return {
-      leftCol0: faces[0].left_col * width,
-      topRow0: faces[0].top_row * height,
-      rightCol0: width - (faces[0].right_col * width),
-      bottomRow0: height - (faces[0].bottom_row * height),
+    let leftCol = [], topRow = [], rightCol = [], bottomRow = [];
 
-      leftCol1: faces[1].left_col * width,
-      topRow1: faces[1].top_row * height,
-      rightCol1: width - (faces[1].right_col * width),
-      bottomRow1: height - (faces[1].bottom_row * height)
+    for (let i = 0; i < faces.length; i++) {
+      leftCol.push(faces[i].left_col * width) 
+      topRow.push(faces[i].top_row * height)
+      rightCol.push(width - (faces[i].right_col * width))
+      bottomRow.push(height - (faces[i].bottom_row * height))
+    }
+
+
+    return {
+
+      leftCol, 
+      topRow, 
+      rightCol, 
+      bottomRow
+
+
+      // leftCol0: faces[0].left_col * width,
+      // topRow0: faces[0].top_row * height,
+      // rightCol0: width - (faces[0].right_col * width),
+      // bottomRow0: height - (faces[0].bottom_row * height),
+
+      // leftCol1: faces[1].left_col * width,
+      // topRow1: faces[1].top_row * height,
+      // rightCol1: width - (faces[1].right_col * width),
+      // bottomRow1: height - (faces[1].bottom_row * height)
     }
   }
 

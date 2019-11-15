@@ -6,23 +6,27 @@ const FaceRecognition = ({ imageUrl, box }) => {
         <div className='center ma' >
             <div className='absolute mt2'>
                 <img id='inputImage' width='500px' height='auto' alt='user submission' src={imageUrl} />
-                <div className='bounding-box'
-                style={{
-                    top: box.topRow0,
-                    right: box.rightCol0,
-                    bottom: box.bottomRow0,
-                    left: box.leftCol0
-                }}
-                ></div>
-                <div className='bounding-box'
-                style={{
-                    top: box.topRow1,
-                    right: box.rightCol1,
-                    bottom: box.bottomRow1,
-                    left: box.leftCol1
-                }}
-                ></div>
-            
+
+                {console.log(box)}
+
+                {/*<div className='bounding-box'
+                    style={{
+                        top: box.topRow[0],
+                        right: box.rightCol[0],
+                        bottom: box.bottomRow[0],
+                        left: box.leftCol[0]
+                    }}
+                ></div>*/}
+
+                {/*<div className='bounding-box'
+                    style={{
+                        top: box.topRow[1],
+                        right: box.rightCol[1],
+                        bottom: box.bottomRow[1],
+                        left: box.leftCol[1]
+                    }}
+                ></div>*/}
+
             </div>
         </div>
     );
