@@ -65,19 +65,11 @@ class App extends Component {
 
 
   calculateFaceLocation = (data) => {
-
     let faces = [];
     //each data.regions is an individual face
-    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
-    console.log("Clarifai face: " + clarifaiFace);
-    const clarifaiFace2 = data.outputs[0].data.regions[1].region_info.bounding_box;
-    const clarifaiFace3 = data.outputs[0].data.regions[2].region_info.bounding_box;
-
     for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
       faces[i] = data.outputs[0].data.regions[i].region_info.bounding_box;
-      // console.log(faces);
     }
-    
 
     //getting dimensions of full image
     const image = document.getElementById('inputImage');
@@ -85,10 +77,15 @@ class App extends Component {
     const height = Number(image.height);
 
     return {
-      leftCol: faces[0].left_col * width,
-      topRow: faces[0].top_row * height,
-      rightCol: width - (faces[0].right_col * width),
-      bottomRow: height - (faces[0].bottom_row * height)
+      leftCol0: faces[0].left_col * width,
+      topRow0: faces[0].top_row * height,
+      rightCol0: width - (faces[0].right_col * width),
+      bottomRow0: height - (faces[0].bottom_row * height),
+
+      leftCol1: faces[1].left_col * width,
+      topRow1: faces[1].top_row * height,
+      rightCol1: width - (faces[1].right_col * width),
+      bottomRow1: height - (faces[1].bottom_row * height)
     }
   }
 
@@ -103,7 +100,7 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    this.setState({showImage: true})
+    this.setState({ showImage: true })
     fetch('http://localhost:3000/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -111,7 +108,7 @@ class App extends Component {
         input: this.state.input
       })
     })
-    .then(response => response.json())
+      .then(response => response.json())
       .then(response => {
         if (response) {
           fetch('http://localhost:3000/image', {
@@ -163,7 +160,7 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onPictureSubmit={this.onPictureSubmit}
             />
-            {this.state.showImage === true ? <FaceRecognition box={box} imageUrl={imageUrl} /> : "" }
+            {this.state.showImage === true ? <FaceRecognition box={box} imageUrl={imageUrl} /> : ""}
           </div>
           : (
             route === 'signin'
