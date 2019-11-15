@@ -33,7 +33,7 @@ const particlesOptions = {
 const initialState = {
   input: '',
   imageUrl: '',
-  box: {},
+  box: [{}],
   route: 'signin',
   isSignedIn: false,
   showImage: false,
@@ -65,15 +65,30 @@ class App extends Component {
 
 
   calculateFaceLocation = (data) => {
+
+    let faces = [];
+    //each data.regions is an individual face
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    console.log("Clarifai face: " + clarifaiFace);
+    const clarifaiFace2 = data.outputs[0].data.regions[1].region_info.bounding_box;
+    const clarifaiFace3 = data.outputs[0].data.regions[2].region_info.bounding_box;
+
+    for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
+      faces[i] = data.outputs[0].data.regions[i].region_info.bounding_box;
+      // console.log(faces);
+    }
+    
+
+    //getting dimensions of full image
     const image = document.getElementById('inputImage');
     const width = Number(image.width);
     const height = Number(image.height);
+
     return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
+      leftCol: faces[0].left_col * width,
+      topRow: faces[0].top_row * height,
+      rightCol: width - (faces[0].right_col * width),
+      bottomRow: height - (faces[0].bottom_row * height)
     }
   }
 
@@ -113,6 +128,8 @@ class App extends Component {
             .catch(console.log)
 
         }
+        // console.log(response);
+        //the calculated face information is then set into box state
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(err => console.log(err))

@@ -63,6 +63,7 @@ class SignIn extends React.Component {
                                 />
                             </div>
                         </fieldset>
+                        { /* This blank className is needed to prevent a graphical glitch */ }
                         <div className="">
                             <input
                                 onClick={this.onSubmitSignIn}
