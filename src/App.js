@@ -11,34 +11,6 @@ import Particles from 'react-particles-js';
 
 require('dotenv').config()
 
-//Just trying out Error Boundaries a bit
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    console.log(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
-    }
-
-    return this.props.children; 
-  }
-}
-
-
 
 const particlesOptions = {
   particles: {
@@ -62,7 +34,7 @@ const particlesOptions = {
 const initialState = {
   input: '',
   imageUrl: '',
-  box: {finalfaces: [{leftCol: 0, topRow: 0, rightCol: 0, bottomRow: 0}] },
+  box: { finalfaces: [{ leftCol: 0, topRow: 0, rightCol: 0, bottomRow: 0 }] },
   route: 'signin',
   isSignedIn: false,
   showImage: false,
@@ -113,23 +85,11 @@ class App extends Component {
       let topRow = faces[i].top_row * height
       let rightCol = (width - (faces[i].right_col * width))
       let bottomRow = (height - (faces[i].bottom_row * height))
-      finalfaces.push({leftCol,topRow,rightCol,bottomRow})
+      finalfaces.push({ leftCol, topRow, rightCol, bottomRow })
     }
 
     return {
-      
       finalfaces
-
-
-      // leftCol0: faces[0].left_col * width,
-      // topRow0: faces[0].top_row * height,
-      // rightCol0: width - (faces[0].right_col * width),
-      // bottomRow0: height - (faces[0].bottom_row * height),
-
-      // leftCol1: faces[1].left_col * width,
-      // topRow1: faces[1].top_row * height,
-      // rightCol1: width - (faces[1].right_col * width),
-      // bottomRow1: height - (faces[1].bottom_row * height)
     }
   }
 
@@ -195,19 +155,18 @@ class App extends Component {
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {route === 'home'
           ? <div>
-            <Logo />
-            <Rank
-              name={this.state.user.name}
-              entries={this.state.user.entries}
-            />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onPictureSubmit={this.onPictureSubmit}
-            />
-            <ErrorBoundary>
-            {this.state.showImage === true ? 
-              <FaceRecognition box={box} imageUrl={imageUrl} /> : ""}
-            </ErrorBoundary>
+              <Logo />
+              <Rank
+                name={this.state.user.name}
+                entries={this.state.user.entries}
+              />
+              <ImageLinkForm
+                onInputChange={this.onInputChange}
+                onPictureSubmit={this.onPictureSubmit}
+              />    
+              {this.state.showImage === true ?
+                <FaceRecognition box={box} imageUrl={imageUrl} /> : ""}
+            
           </div>
           : (
             route === 'signin'
