@@ -6,8 +6,8 @@ const FaceRecognition = ({ imageUrl, box }) => {
         <div className='center ma' >
             <div className='absolute mt2'>
                 <img id='inputImage' width='500px' height='auto' alt='user submission' src={imageUrl} />
-
                 {console.log(box)}
+                {console.log(box.finalfaces["0"].bottomRow)}
 
                 {/* box.map is not a function */}
 
@@ -20,17 +20,17 @@ const FaceRecognition = ({ imageUrl, box }) => {
                         left: ele.leftCol
                     }}
                 ></div>
-                  ))}
+                ))} */}
                
 
-                {/*<div className='bounding-box'
+                {<div className='bounding-box'
                     style={{
-                        top: box.topRow[1],
-                        right: box.rightCol[1],
-                        bottom: box.bottomRow[1],
-                        left: box.leftCol[1]
+                        top: box.finalfaces[0].topRow,
+                        right: box.finalfaces[0].rightCol,
+                        bottom: box.finalfaces[0].bottomRow,
+                        left: box.finalfaces[0].leftCol
                     }}
-                ></div>*/}
+                ></div>}
 
             </div>
         </div>
