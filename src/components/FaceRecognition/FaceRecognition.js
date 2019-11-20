@@ -9,9 +9,9 @@ const FaceRecognition = ({ imageUrl, box }) => {
                 {console.log(box)}
                 {console.log(box.finalfaces["0"].bottomRow)}
 
-                {/* box.map is not a function */}
+                {/*This goes through all the array elements and creates boxes */}
 
-                {/* box.map((ele) => (
+                { box.finalfaces.map((ele) => (
                     <div className='bounding-box'
                     style={{
                         top: ele.topRow,
@@ -20,17 +20,18 @@ const FaceRecognition = ({ imageUrl, box }) => {
                         left: ele.leftCol
                     }}
                 ></div>
-                ))} */}
+                ))}
                
-
-                {<div className='bounding-box'
+                {/*This was the old way*/}
+                    
+                {/*<div className='bounding-box'
                     style={{
                         top: box.finalfaces[0].topRow,
                         right: box.finalfaces[0].rightCol,
                         bottom: box.finalfaces[0].bottomRow,
                         left: box.finalfaces[0].leftCol
                     }}
-                ></div>}
+                ></div>*/}
 
             </div>
         </div>
