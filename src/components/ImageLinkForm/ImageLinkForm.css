@@ -1,7 +1,7 @@
 .form {
     width: 80vw;
-    background-color: red;
-    background-image: url("./5dots.png");
+    background-color: gray;
+    background-image: url("./papyrus.png");
     background-repeat: repeat;
-    background-size: 40px 60px;
+    background-size: auto;
 }

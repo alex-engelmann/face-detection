@@ -1,5 +1,4 @@
 import React from 'react';
-import Papyrus from './papyrus.png';
 import './ImageLinkForm.css';
 
 
@@ -7,7 +6,7 @@ const ImageLinkForm = ({ onInputChange, onPictureSubmit }) => {
     return (
         <div>
             <p className='f3'>
-                {'This site will find the faces in your pictures.  Give it a try'}
+                {'This site will find the faces in your pictures.  Enter the URL of an image and click detect to see it in action!'}
             </p>
             <p>
                 <a href='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d' rel="noopener noreferrer" target="_blank" className='f4'>
