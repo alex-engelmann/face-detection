@@ -66,25 +66,24 @@ class App extends Component {
 
 
   calculateFaceLocation = (data) => {
-    let faces = [];
-    //each data.regions is an individual face
-    for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
-      faces[i] = data.outputs[0].data.regions[i].region_info.bounding_box;
-    }
+    // let faces = [];
+    // //each data.regions is an individual face
+    // for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
+    //   faces[i] = data.outputs[0].data.regions[i].region_info.bounding_box;
+    // }
 
     //getting dimensions of full image
     const image = document.getElementById('inputImage');
     const width = Number(image.width);
     const height = Number(image.height);
 
-    // let leftCol = [], topRow = [], rightCol = [], bottomRow = [];
     let finalfaces = []
 
-    for (let i = 0; i < faces.length; i++) {
-      let leftCol = faces[i].left_col * width
-      let topRow = faces[i].top_row * height
-      let rightCol = (width - (faces[i].right_col * width))
-      let bottomRow = (height - (faces[i].bottom_row * height))
+    for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
+      let leftCol = data.outputs[0].data.regions[i].region_info.bounding_box.left_col * width
+      let topRow = data.outputs[0].data.regions[i].region_info.bounding_box.top_row * height
+      let rightCol = (width - (data.outputs[0].data.regions[i].region_info.bounding_box.right_col * width))
+      let bottomRow = (height - (data.outputs[0].data.regions[i].region_info.bounding_box.bottom_row * height))
       finalfaces.push({ leftCol, topRow, rightCol, bottomRow })
     }
 
@@ -149,13 +148,12 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
-        <Particles className='particles'
-          params={particlesOptions}
-        />
+        {/*<Particles className='particles'
+          params={particlesOptions}/>*/}
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {route === 'home'
           ? <div>
-              <Logo />
+              {/* <Logo /> */}
               <Rank
                 name={this.state.user.name}
                 entries={this.state.user.entries}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Papyrus from './papyrus.png';
 import './ImageLinkForm.css';
 
 
