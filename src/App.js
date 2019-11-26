@@ -7,29 +7,8 @@ import Rank from './components/Rank/Rank';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
-import Particles from 'react-particles-js';
 
 require('dotenv').config()
-
-
-const particlesOptions = {
-  particles: {
-    number: {
-      value: 80,
-      density: {
-        enable: true,
-        value_area: 400
-      }
-    },
-    line_linked: {
-      shadow: {
-        enable: true,
-        color: "#3CA9D1",
-        blur: 5
-      }
-    }
-  }
-}
 
 const initialState = {
   input: '',
@@ -64,24 +43,28 @@ class App extends Component {
     })
   }
 
-
   calculateFaceLocation = (data) => {
 
     //getting dimensions of full image
     const image = document.getElementById('inputImage');
-    const width = Number(image.width);
+    const width = Number(image.width); //this is set as 500px elsewhere
     const height = Number(image.height);
+
+    console.log("width: " + width);
+    console.log("height: " + height);
+    console.log(data);
 
     let faces = []
     // //each data.regions is an individual face
     for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
-      let leftCol = data.outputs[0].data.regions[i].region_info.bounding_box.left_col * width
-      let topRow = data.outputs[0].data.regions[i].region_info.bounding_box.top_row * height
-      let rightCol = (width - (data.outputs[0].data.regions[i].region_info.bounding_box.right_col * width))
-      let bottomRow = (height - (data.outputs[0].data.regions[i].region_info.bounding_box.bottom_row * height))
+      let face = data.outputs[0].data.regions[i].region_info.bounding_box
+      let leftCol = face.left_col * width
+      let topRow = face.top_row * height
+      let rightCol = (width - (face.right_col * width))
+      //The 50px in the following line is because of the <p> element below the image box
+      let bottomRow = (height - (face.bottom_row * height)) + 50
       faces.push({ leftCol, topRow, rightCol, bottomRow })
     }
-
     return {
       faces
     }
@@ -97,8 +80,9 @@ class App extends Component {
   }
 
   onPictureSubmit = () => {
-    this.setState({ imageUrl: this.state.input })
-    this.setState({ showImage: true })
+    this.setState({ imageUrl: this.state.input });
+    this.setState({ showImage: true });
+
     fetch('http://localhost:3000/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -123,6 +107,7 @@ class App extends Component {
             .catch(console.log)
 
         }
+        else {alert("No server response")}
         // console.log(response);
         //the calculated face information is then set into box state
         this.displayFaceBox(this.calculateFaceLocation(response))
@@ -148,18 +133,18 @@ class App extends Component {
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {route === 'home'
           ? <div>
-              {/* <Logo /> */}
-              <Rank
+            {/* <Logo /> */}
+            {/* <Rank
                 name={this.state.user.name}
                 entries={this.state.user.entries}
-              />
-              <ImageLinkForm
-                onInputChange={this.onInputChange}
-                onPictureSubmit={this.onPictureSubmit}
-              />    
-              {this.state.showImage === true ?
-                <FaceRecognition box={box} imageUrl={imageUrl} /> : ""}
-            
+              /> */}
+            <ImageLinkForm
+              onInputChange={this.onInputChange}
+              onPictureSubmit={this.onPictureSubmit}
+            />
+            {this.state.showImage === true ?
+              <FaceRecognition box={box} imageUrl={imageUrl} /> : ""}
+
           </div>
           : (
             route === 'signin'

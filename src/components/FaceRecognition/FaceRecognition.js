@@ -13,17 +13,19 @@ const FaceRecognition = ({ imageUrl, box }) => {
 
                     <div key={index} className='bounding-box'
                         style={{
+                            left: ele.leftCol,
                             top: ele.topRow,
                             right: ele.rightCol,
-                            bottom: ele.bottomRow,
-                            left: ele.leftCol
+                            bottom: ele.bottomRow
+                            
                         }}
                     ></div>
                 ))}
-
-                <p>{box.faces.length} faces detected</p>
+                {/* This p element is exactly 50px tall */}
+                <p>{box.faces.length} face(s) detected</p>
 
             </div>
+            
         </div>
     );
 }

@@ -32,7 +32,24 @@ class SignIn extends React.Component {
                     this.props.onRouteChange('home');
                 }
             })
+    }
 
+    guestSignIn = () => {
+        fetch('http://localhost:3000/signin', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: "guest@gmail.com",
+                password: "123"
+            })
+        })
+        .then(response => response.json())
+        .then(user => {
+            if (user.id) {
+                this.props.loadUser(user);
+                this.props.onRouteChange('home');
+            }
+        })
     }
 
     render() {
@@ -63,7 +80,7 @@ class SignIn extends React.Component {
                                 />
                             </div>
                         </fieldset>
-                        
+
                         <div>
                             <input
                                 onClick={this.onSubmitSignIn}
@@ -72,6 +89,16 @@ class SignIn extends React.Component {
                                 value="Sign in"
                             />
                         </div>
+                        <br></br>
+                        <div>
+                            <input
+                                onClick={this.guestSignIn}
+                                className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib"
+                                type="submit"
+                                value="Sign in as Guest"
+                            />
+                        </div>
+
                         <div className="lh-copy mt3">
                             <p onClick={() => onRouteChange('register')}
                                 className="f6 link dim black db pointer">Register
