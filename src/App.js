@@ -50,19 +50,15 @@ class App extends Component {
     const width = Number(image.width); //this is set as 500px elsewhere
     const height = Number(image.height);
 
-    console.log("width: " + width);
-    console.log("height: " + height);
-    console.log(data);
-
     let faces = []
     // //each data.regions is an individual face
     for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
-      let face = data.outputs[0].data.regions[i].region_info.bounding_box
-      let leftCol = face.left_col * width
-      let topRow = face.top_row * height
-      let rightCol = (width - (face.right_col * width))
+      let currentFace = data.outputs[0].data.regions[i].region_info.bounding_box
+      let leftCol = currentFace.left_col * width
+      let topRow = currentFace.top_row * height
+      let rightCol = (width - (currentFace.right_col * width))
       //The 50px in the following line is because of the <p> element below the image box
-      let bottomRow = (height - (face.bottom_row * height)) + 50
+      let bottomRow = (height - (currentFace.bottom_row * height)) + 50
       faces.push({ leftCol, topRow, rightCol, bottomRow })
     }
     return {
