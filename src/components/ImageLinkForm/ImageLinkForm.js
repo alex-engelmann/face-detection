@@ -20,15 +20,15 @@ const ImageLinkForm = ({ onInputChange, onPictureSubmit }) => {
 
             <div className='center'>
                 <div className='form center pa4 br3 shadow-5'>
+                    
                     <input id='urlfield' className='f3 pa2 w-70 center' type='text' onChange={onInputChange} />
                     <button
+                        type="submit"
                         className='w-30 grow f4 link ph1 pv2 dib white bg-light-purple'
                         onClick={onPictureSubmit}
+                        
                     >Detect</button>
-                    {/* <button
-                        className='w-30 grow f4 link ph1 pv2 dib white bg-light-purple'
-                        onClick= {document.getElementById('urlfield').value= '' }
-                    >Clear</button> */}
+                    
                     
                 </div>
             </div>
