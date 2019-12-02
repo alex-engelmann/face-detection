@@ -7,6 +7,6 @@
 /* The input field seemed too wide at desktop resolutions, this narrows it */
 @media only screen and (min-width: 1200px) {
     .form {
-        width: 60vw;;
+        width: 60vw;
     }
   }

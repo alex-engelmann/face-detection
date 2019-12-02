@@ -82,8 +82,8 @@ class App extends Component {
   }
 
   oneFace = () => {
-    this.setState({ input: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d'});
-    document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d'
+    this.setState({ input: 'https://images.unsplash.com/photo-1569001821155-104016a820c7'});
+    document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1569001821155-104016a820c7'
   }
 
   manyFaces = () => {

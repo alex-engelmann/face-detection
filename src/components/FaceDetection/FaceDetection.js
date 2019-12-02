@@ -5,7 +5,7 @@ const FaceDetection = ({ imageUrl, box }) => {
     return (
         <div className='center ma' >
             <div className='absolute mt2'>
-                <img id='inputImage' width='500px' height='auto' alt='user submission' src={imageUrl} />
+                <img id='inputImage' alt='user submission' src={imageUrl} />
                 
                 {/*This goes through all the array elements and creates boxes */}
 
