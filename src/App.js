@@ -71,16 +71,22 @@ class App extends Component {
     this.setState({ box: box })
   }
 
+  clearURL = (event) => {
+    console.log(event);
+    this.setState({ input: ""});
+    document.getElementById('urlfield').value = "";
+  }
+
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
-    if (event.key === "Enter") {
-      this.onPictureSubmit()
-    }
+    console.log(event);
   }
+
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     this.setState({ showImage: true });
+    this.clearURL();
 
     fetch('http://localhost:3000/imageurl', {
       method: 'post',
@@ -138,6 +144,7 @@ class App extends Component {
                 entries={this.state.user.entries}
               /> */}
             <ImageLinkForm
+              clearURL={this.clearURL}
               onInputChange={this.onInputChange}
               onPictureSubmit={this.onPictureSubmit}
             />
