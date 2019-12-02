@@ -153,7 +153,6 @@ class App extends Component {
                 entries={this.state.user.entries}
               /> : ""}
             <ImageLinkForm
-              clearURL={this.clearURL}
               onInputChange={this.onInputChange}
               onPictureSubmit={this.onPictureSubmit}
               oneFace={this.oneFace}
