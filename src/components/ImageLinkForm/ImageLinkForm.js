@@ -24,7 +24,7 @@ const ImageLinkForm = ({ onInputChange, onPictureSubmit }) => {
                     <input id='urlfield' className='f3 pa2 w-70 center' type='text' onChange={onInputChange} />
                     <button
                         type="submit"
-                        className='w-30 grow f4 link ph1 pv2 dib white bg-light-purple'
+                        className='w-30 grow f4 link ph1 pv2 dib white bg-orange'
                         onClick={onPictureSubmit}
                         
                     >Detect</button>

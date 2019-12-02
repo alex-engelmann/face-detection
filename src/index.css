@@ -4,7 +4,7 @@ body {
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(89deg, rgb(212, 205, 205) 0%, #04C8DE 100%);
+  background: linear-gradient(89deg, #F6FFFE 0%, #357EDD 100%);
 }
 
 button {
