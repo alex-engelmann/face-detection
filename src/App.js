@@ -3,7 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 // import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceDetection from './components/FaceDetection/FaceDetection';
-// import Rank from './components/Rank/Rank';
+import Rank from './components/Rank/Rank';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import './App.css';
@@ -139,10 +139,10 @@ class App extends Component {
         {route === 'home'
           ? <div>
             {/* <Logo /> */}
-            {/* <Rank
+            {this.state.user.email !== "guest@gmail.com" ? <Rank
                 name={this.state.user.name}
                 entries={this.state.user.entries}
-              /> */}
+              /> : ""}
             <ImageLinkForm
               clearURL={this.clearURL}
               onInputChange={this.onInputChange}
