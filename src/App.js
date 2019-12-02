@@ -139,6 +139,7 @@ class App extends Component {
         {route === 'home'
           ? <div>
             {/* <Logo /> */}
+            {/* {If user is guest, they won't see their entry count} */}
             {this.state.user.email !== "guest@gmail.com" ? <Rank
                 name={this.state.user.name}
                 entries={this.state.user.entries}
