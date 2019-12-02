@@ -4,17 +4,21 @@
   "private": true,
   "dependencies": {
     "clarifai": "^2.9.1",
+    "gh-pages": "^2.1.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-scripts": "3.1.2",
     "react-tilt": "^0.1.4",
     "tachyons": "^4.11.1"
   },
+  "homepage": "https://alex-engelmann.github.io/face-detection/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
