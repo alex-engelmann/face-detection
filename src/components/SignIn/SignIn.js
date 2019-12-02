@@ -17,7 +17,7 @@ class SignIn extends React.Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('http://localhost:3000/signin', {
+        fetch('https://face-detection-backend-aje.herokuapp.com/signin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -35,7 +35,7 @@ class SignIn extends React.Component {
     }
 
     guestSignIn = () => {
-        fetch('http://localhost:3000/signin', {
+        fetch('https://face-detection-backend-aje.herokuapp.com/signin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

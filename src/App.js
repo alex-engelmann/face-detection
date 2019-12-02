@@ -72,23 +72,22 @@ class App extends Component {
   }
 
   clearURL = (event) => {
-    console.log(event);
+    // console.log(event);
     this.setState({ input: ""});
     document.getElementById('urlfield').value = "";
   }
 
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
-    console.log(event);
+    // console.log(event);
   }
 
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    this.setState({ showImage: true });
     this.clearURL();
 
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://face-detection-backend-aje.herokuapp.com/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -98,7 +97,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3000/image', {
+          fetch('https://face-detection-backend-aje.herokuapp.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -118,6 +117,7 @@ class App extends Component {
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(err => console.log(err))
+      this.setState({ showImage: true });
   }
 
   onRouteChange = (route) => {
