@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
-// import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceDetection from './components/FaceDetection/FaceDetection';
 import Rank from './components/Rank/Rank';
@@ -138,7 +137,7 @@ class App extends Component {
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {route === 'home'
           ? <div>
-            {/* <Logo /> */}
+            
             {/* {If user is guest, they won't see their entry count} */}
             {this.state.user.email !== "guest@gmail.com" ? <Rank
                 name={this.state.user.name}
