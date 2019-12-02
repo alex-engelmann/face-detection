@@ -70,7 +70,7 @@ class App extends Component {
     this.setState({ box: box })
   }
 
-  clearURL = (event) => {
+  clearURL = () => {
     // console.log(event);
     this.setState({ input: ""});
     document.getElementById('urlfield').value = "";
@@ -81,6 +81,15 @@ class App extends Component {
     // console.log(event);
   }
 
+  oneFace = () => {
+    this.setState({ input: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d'});
+    document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d'
+  }
+
+  manyFaces = () => {
+    this.setState({ input: 'https://images.unsplash.com/photo-1544097797-bf8fc095364c'});
+    document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1544097797-bf8fc095364c'
+  }
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
@@ -147,6 +156,8 @@ class App extends Component {
               clearURL={this.clearURL}
               onInputChange={this.onInputChange}
               onPictureSubmit={this.onPictureSubmit}
+              oneFace={this.oneFace}
+              manyFaces={this.manyFaces}
             />
             {this.state.showImage === true ?
               <FaceDetection box={box} imageUrl={imageUrl} /> : ""}
