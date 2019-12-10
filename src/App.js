@@ -91,6 +91,11 @@ class App extends Component {
     document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1544097797-bf8fc095364c'
   }
 
+  isUrlBlank = () => {
+    if (this.state.input === ""){return true}
+    return false;
+  }
+
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     this.clearURL();
@@ -157,6 +162,7 @@ class App extends Component {
               onPictureSubmit={this.onPictureSubmit}
               oneFace={this.oneFace}
               manyFaces={this.manyFaces}
+              isUrlBlank={this.isUrlBlank}
             />
             {this.state.showImage === true ?
               <FaceDetection box={box} imageUrl={imageUrl} /> : ""}

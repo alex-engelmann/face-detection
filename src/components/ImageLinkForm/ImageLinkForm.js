@@ -1,7 +1,7 @@
 import React from 'react';
 import './ImageLinkForm.css';
 
-const ImageLinkForm = ({ onInputChange, onPictureSubmit, oneFace, manyFaces }) => {
+const ImageLinkForm = ({ onInputChange, onPictureSubmit, oneFace, manyFaces, isUrlBlank }) => {
     return (
         <div>
             <p className='f3'>
@@ -14,12 +14,12 @@ const ImageLinkForm = ({ onInputChange, onPictureSubmit, oneFace, manyFaces }) =
                  type="submit" onClick={manyFaces}>Many Faces</button>
             </p>
 
-
             <div className='center'>
                 <div className='form center pa4 br3 shadow-5'>
 
-                    <input id='urlfield' className='f3 pa2 w-70 center' type='text' onChange={onInputChange} />
+                    <input required id='urlfield' className='f3 pa2 w-70 center' type='text' onChange={onInputChange} />
                     <button
+                        disabled = {isUrlBlank()}
                         type="submit"
                         className='w-30 f4 link ph1 pv2 dib white bg-orange'
                         onClick={onPictureSubmit}
