@@ -17,7 +17,7 @@ const ImageLinkForm = ({ onInputChange, onPictureSubmit, oneFace, manyFaces, isU
             <div className='center'>
                 <div className='form center pa4 br3 shadow-5'>
 
-                    <input required id='urlfield' className='f3 pa2 w-70 center' type='text' onChange={onInputChange} />
+                    <input id='urlfield' className='f3 pa2 w-70 center' type='text' onChange={onInputChange} />
                     <button
                         disabled = {isUrlBlank()}
                         type="submit"

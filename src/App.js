@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   calculateFaceLocation = (data) => {
-
     //getting dimensions of full image
     const image = document.getElementById('inputImage');
     const width = Number(image.width); //this is set as 500px elsewhere
@@ -72,7 +71,7 @@ class App extends Component {
 
   clearURL = () => {
     // console.log(event);
-    this.setState({ input: ""});
+    this.setState({ input: "" });
     document.getElementById('urlfield').value = "";
   }
 
@@ -81,19 +80,18 @@ class App extends Component {
     // console.log(event);
   }
 
+  isUrlBlank = () => {
+    if (this.state.input === "") { return true }
+    return false;
+  }
   oneFace = () => {
-    this.setState({ input: 'https://images.unsplash.com/photo-1569001821155-104016a820c7'});
+    this.setState({ input: 'https://images.unsplash.com/photo-1569001821155-104016a820c7' });
     document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1569001821155-104016a820c7'
   }
 
   manyFaces = () => {
-    this.setState({ input: 'https://images.unsplash.com/photo-1544097797-bf8fc095364c'});
+    this.setState({ input: 'https://images.unsplash.com/photo-1544097797-bf8fc095364c' });
     document.getElementById('urlfield').value = 'https://images.unsplash.com/photo-1544097797-bf8fc095364c'
-  }
-
-  isUrlBlank = () => {
-    if (this.state.input === ""){return true}
-    return false;
   }
 
   onPictureSubmit = () => {
@@ -109,6 +107,11 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(response => {
+        if (response === 'unable to work with API') {
+          this.setState({ showImage: false });
+          console.log("not a valid image url");
+          return 0;
+        }
         if (response) {
           fetch('https://face-detection-backend-aje.herokuapp.com/image', {
             method: 'put',
@@ -124,13 +127,14 @@ class App extends Component {
             .catch(console.log)
 
         }
-        else {alert("No server response")}
+        else { alert("No server response") }
+
         // console.log(response);
         //the calculated face information is then set into box state
-        this.displayFaceBox(this.calculateFaceLocation(response))
+        this.displayFaceBox(this.calculateFaceLocation(response));
       })
       .catch(err => console.log(err))
-      this.setState({ showImage: true });
+    this.setState({ showImage: true })
   }
 
   onRouteChange = (route) => {
@@ -151,12 +155,12 @@ class App extends Component {
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {route === 'home'
           ? <div>
-            
+
             {/* {If user is guest, they won't see their entry count} */}
             {this.state.user.email !== "guest@gmail.com" ? <Rank
-                name={this.state.user.name}
-                entries={this.state.user.entries}
-              /> : ""}
+              name={this.state.user.name}
+              entries={this.state.user.entries}
+            /> : ""}
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onPictureSubmit={this.onPictureSubmit}
