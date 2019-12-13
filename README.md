@@ -1,6 +1,6 @@
 ### Overview
 
-This React app allows users to optionally sign in and submit images from the web, and then finds faces within those images.  If users sign in, then their number of submissions is tracked and shown.  The front-end is hosted here on GitHub pages, the back end is hosted on Heroku and includes a PostgreSQL database for storing users and submissions.  User passwords are encrypted using bcrypt.  Faces are found in the images through an API provided by [Clarifai](https://www.clarifai.com/).
+This React app allows users to optionally sign in and submit images from the web, and then finds faces within those images.  If users sign in, then their number of submissions is tracked and shown.  The front-end is hosted here on GitHub pages, the back end is hosted on Heroku and includes a PostgreSQL database for storing users and submissions.  User passwords are encrypted using bcrypt.  Faces are found in the images through an API provided by [Clarifai](https://www.clarifai.com/).  For the back-end portion of this app, see [here](https://github.com/alex-engelmann/face-detection-backend).
 
 <p align="center"><a href=https://alex-engelmann.github.io/face-detection/> Visit the deployed site</a></p>
 
