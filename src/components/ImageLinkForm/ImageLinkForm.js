@@ -4,9 +4,12 @@ import './ImageLinkForm.css';
 const ImageLinkForm = ({ onInputChange, onPictureSubmit, oneFace, manyFaces, isUrlBlank }) => {
     return (
         <div>
-            <p className='f3'>
-                {'This site will find the faces in your pictures.  Enter the URL of an image or try these examples and click detect to see it in action!'}
-            </p>
+            <div className='f3 sentence'>
+                {'This site will find up to 300 faces in your pictures.'}
+            </div>
+            <div className='f3 sentence'>
+                {'Enter the URL of an image or try these examples and click detect to see it in action!'}
+            </div>
             <p>
                 <button className='f5 link dim br3 ph3 pv2 mb2 dib white bg-dark-green'
                  type="submit" onClick={oneFace}>One Face</button>

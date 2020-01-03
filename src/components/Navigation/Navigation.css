@@ -1,0 +1,5 @@
+.nav-box {
+    float: right;
+    display: inline-flex; 
+    justify-content:flex-end;
+}

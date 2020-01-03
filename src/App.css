@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .center {
@@ -7,4 +8,27 @@
   justify-content: center;
 }
 
+header {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
 
+.title {
+  font-size: 5rem;
+  font-weight: 550;
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  padding-left: 12vw;
+  background-image: linear-gradient(to right, #357EDD, #333 120%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+      padding-left: 0;
+  }
+}

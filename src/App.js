@@ -51,13 +51,13 @@ class App extends Component {
     let faces = []
     // //each data.regions is an individual face
     for (let i = 0; i < data.outputs[0].data.regions.length; i++) {
-      let currentFace = data.outputs[0].data.regions[i].region_info.bounding_box
-      let leftCol = currentFace.left_col * width
-      let topRow = currentFace.top_row * height
-      let rightCol = (width - (currentFace.right_col * width))
+      let currentFace = data.outputs[0].data.regions[i].region_info.bounding_box;
+      let leftCol = currentFace.left_col * width;
+      let topRow = currentFace.top_row * height;
+      let rightCol = (width - (currentFace.right_col * width));
       //The 50px in the following line is because of the <p> element below the image box
-      let bottomRow = (height - (currentFace.bottom_row * height)) + 50
-      faces.push({ leftCol, topRow, rightCol, bottomRow })
+      let bottomRow = (height - (currentFace.bottom_row * height)) + 50;
+      faces.push({ leftCol, topRow, rightCol, bottomRow });
     }
     return {
       faces
@@ -150,9 +150,12 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
-        {/*<Particles className='particles'
-          params={particlesOptions}/>*/}
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        <header>
+          <div className="title">Face Detector</div>
+          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+
+        </header>
+
         {route === 'home'
           ? <div>
 
